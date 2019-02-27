@@ -1,7 +1,9 @@
+import scala.annotation.tailrec
+
 class Accumulate {
-   def accumulate[A, B](f: (A) => B, list: List[A]): List[B] =
+   @tailrec final def accumulate[A, B](f: A => B, list: List[A], acc: List[B] = Nil): List[B] =
       list match {
-         case List() => Nil
-         case x :: tail => f(x) :: accumulate(f, tail)
+         case List() => acc
+         case x :: tail => accumulate(f, tail, acc :+ f(x))
       }
 }

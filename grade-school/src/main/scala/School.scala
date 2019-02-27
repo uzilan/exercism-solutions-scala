@@ -18,5 +18,5 @@ class School {
       ListMap(sorted.toSeq.sortBy(_._1): _*)
    }
 
-   val map = MuMap[Int, MuSeq[String]]()
+   private val map = MuMap[Int, MuSeq[String]]()
 }

@@ -7,11 +7,11 @@ object SecretHandshake {
    @tailrec def commands(number: Int, list: List[String] = List(), reverse: Boolean = false): List[String] =
       number match {
          case x if x <= 0 => if (reverse) list.reverse else list
-         case x if x >= Reverse => commands(number - Reverse, list, reverse = true)
-         case x if x >= Jump => commands(number - Jump, Jump.sign :: list, reverse)
-         case x if x >= CloseYourEyes => commands(number - CloseYourEyes, CloseYourEyes.sign :: list, reverse)
-         case x if x >= DoubleBlink => commands(number - DoubleBlink, DoubleBlink.sign :: list, reverse)
-         case x if x >= Wink => commands(number - Wink, Wink.sign :: list, reverse)
+         case x if (x & Reverse) == Reverse.value => commands(number - Reverse, list, reverse = true)
+         case x if (x & Jump) == Jump.value => commands(number - Jump, Jump.sign :: list, reverse)
+         case x if (x & CloseYourEyes) == CloseYourEyes.value => commands(number - CloseYourEyes, CloseYourEyes.sign :: list, reverse)
+         case x if (x & DoubleBlink) == DoubleBlink.value => commands(number - DoubleBlink, DoubleBlink.sign :: list, reverse)
+         case x if (x & Wink) == Wink.value => commands(number - Wink, Wink.sign :: list, reverse)
       }
 }
 

@@ -1,4 +1,4 @@
-import Bearing._
+import Bearing.{Bearing, East, North, South, West}
 
 case class Robot(bearing: Bearing, coordinates: (Int, Int)) {
 

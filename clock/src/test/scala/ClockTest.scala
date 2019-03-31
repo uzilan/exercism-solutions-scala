@@ -1,4 +1,4 @@
-import org.scalatest.{Matchers, FunSuite}
+import org.scalatest.{FunSuite, Matchers}
 
 /** @version 2.2.1 */
 class ClockTest extends FunSuite with Matchers {
@@ -172,42 +172,42 @@ class ClockTest extends FunSuite with Matchers {
   }
 
   test("clocks with negative hour that wraps multiple times") {
-    
+
     Clock(13, 49) == Clock(-83, 49) should be(true)
   }
 
   test("clocks with minute overflow") {
-    
+
     Clock(0, 1) == Clock(0, 1441) should be(true)
   }
 
   test("clocks with minute overflow by several days") {
-    
+
     Clock(2, 2) == Clock(2, 4322) should be(true)
   }
 
   test("clocks with negative minute") {
-    
+
     Clock(2, 40) == Clock(3, -20) should be(true)
   }
 
   test("clocks with negative minute that wraps") {
-    
+
     Clock(4, 10) == Clock(5, -1490) should be(true)
   }
 
   test("clocks with negative minute that wraps multiple times") {
-    
+
     Clock(6, 15) == Clock(6, -4305) should be(true)
   }
 
   test("clocks with negative hours and minutes") {
-    
+
     Clock(7, 32) == Clock(-12, -268) should be(true)
   }
 
   test("clocks with negative hours and minutes that wrap") {
-    
+
     Clock(18, 7) == Clock(-54, -11513) should be(true)
   }
 }

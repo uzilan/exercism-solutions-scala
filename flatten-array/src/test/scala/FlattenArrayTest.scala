@@ -1,4 +1,4 @@
-import org.scalatest.{Matchers, FunSuite}
+import org.scalatest.{FunSuite, Matchers}
 
 /** @version 1.2.0 */
 class FlattenArrayTest extends FunSuite with Matchers {
@@ -14,9 +14,9 @@ class FlattenArrayTest extends FunSuite with Matchers {
 
   test("5 level nesting") {
     FlattenArray.flatten(List(0,
-                              2,
-                              List(List(2, 3), 8, 100, 4, List(List(List(50)))),
-                              -2)) should be(
+      2,
+      List(List(2, 3), 8, 100, 4, List(List(List(50)))),
+      -2)) should be(
       List(0, 2, 2, 3, 8, 100, 4, 50, -2))
   }
 
@@ -30,18 +30,18 @@ class FlattenArrayTest extends FunSuite with Matchers {
   test("6 level nest list with null values") {
     FlattenArray.flatten(
       List(0,
-           2,
-           List(List(2, 3), 8, List(List(100)), null, List(List(null))),
-           -2)) should be(List(0, 2, 2, 3, 8, 100, -2))
+        2,
+        List(List(2, 3), 8, List(List(100)), null, List(List(null))),
+        -2)) should be(List(0, 2, 2, 3, 8, 100, -2))
   }
 
   test("all values in nested list are null") {
     FlattenArray.flatten(
       List(null,
-           List(List(List(null))),
-           null,
-           null,
-           List(List(null, null), null),
-           null)) should be(List())
+        List(List(List(null))),
+        null,
+        null,
+        List(List(null, null), null),
+        null)) should be(List())
   }
 }

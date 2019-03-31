@@ -1,26 +1,26 @@
 import org.scalatest._
 
-import collection.mutable
+import scala.collection.mutable
 
 /** @version created manually **/
 class RobotNameSpecs extends FunSpec with Matchers {
   val nameRegex = """[A-Z]{2}\d{3}"""
 
-  it ("has a name") {
+  it("has a name") {
     new Robot().name should fullyMatch regex nameRegex
   }
 
-  it ("does not change its name") {
+  it("does not change its name") {
     val robot = new Robot
     val name = robot.name
-    robot.name should be (name)
+    robot.name should be(name)
   }
 
-  it ("does not have the same name as other robots") {
+  it("does not have the same name as other robots") {
     new Robot().name should not be new Robot().name
   }
 
-  it ("can have its name reset") {
+  it("can have its name reset") {
     val robot = new Robot
     val name = robot.name
     robot.reset()
@@ -35,7 +35,7 @@ class RobotNameSpecs extends FunSpec with Matchers {
   // The Robot code needs to be efficient enough to allow all 676,000 unique names to be generated.
   it("a large number of new instances have unique names") {
     val alreadySet = mutable.HashSet.empty[String]
-    for(i <- 0 until 676000 - 6) { // as 6 robot names are generated in the tests above!!
+    for (i <- 0 until 676000 - 6) { // as 6 robot names are generated in the tests above!!
       val name = new Robot().name
       if (alreadySet contains name) {
         fail(s"$name is repeated after $i tries")
